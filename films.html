@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Films</title>
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+	<nav>
+		<div class="row">
+			<div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<ul class="menu">
+					<li class="menu-item">Comedy</li>
+					<li class="menu-item">Action</li>
+					<li class="menu-item">Adventure</li>
+					<li class="menu-item">Crime</li>
+					<li class="menu-item">Drama</li>
+				</ul>
+			</div>
+			<div id="searchApp" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 padding-top searchbox">
+				<ul class="search-results" v-bind:class="{hidden: isHidden}">
+					<li class="search-result" v-for="searchResult in results">{{searchResult}}</li>
+					
+				</ul>
+				<input class="search form-control" type="text" placeholder="Search movie..." v-on:keyup="search($event)">
+			</div>
+		</div>
+	</nav>
+	<div id="films" class="page">
+		<div class="row">
+			<h1>Movies</h1>
+		</div>
+		<div class="row">
+			<div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+			<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+				<div class="films">
+					<div class="film" v-for="film in films">
+						<div class="card">
+							<img  class="card-img-top img-responsive" v-bind:src="film.film_logo_src" alt="film logo">
+							<div class="card-block">
+								<h4 class="card-title">{{film.film_name}}</h4>
+								<p class="card-text">
+								{{film.film_description}}
+								</p>
+								<a href="#" class="btn btn-danger">Buy tickes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+		</div>
+	</div>
+</body>
+<script>
+new Vue({
+    el: '#searchApp',
+    data: {
+        results: [],
+        isHidden: true,
+    },
+    created: function() {
+        this.results.push("one result");
+        this.results.push("two result");
+        this.results.push("three result");
+    },
+    methods: {
+        showHide: function(event) {
+            searchInput = $(event.target);
+            if (searchInput.val().length == 0) {
+                this.isHidden = true;
+            } else {
+                this.isHidden = false;
+            }
+        },
+        search: function(event) {
+            this.showHide(event);
+            //there will be ajax request which will load search results and push them into results array
+            // now i just do similiarly actions insode create functions
+        },
+
+    },
+});
+new Vue({
+    el: '#films',
+    data: {
+        films: [],
+    },
+    created: function() {
+        //here will be ajax code, which will load info about films
+        this.films.push({
+            "film_name": "Механик: Воскрешение",
+            "film_description": "Продолжение остросюжетного экшн-хита 2010 года. Для того чтобы спасти любимую девушку, бывший киллер должен пойти на три убийства и обставить их как несчастный случай.",
+            "film_logo_src": "https://thumbs.dfs.ivi.ru/storage18/contents/b/2/b16e75aed16a9c5b7b73050e8391ce.jpg/140x215/"
+        });
+        this.films.push({
+            "film_name": "Новая эра Z",
+            "film_description": "В недалеком будущем ученые ставят опыты над детьми-гибридами, которые мыслят здраво, пока не почуют человеческую плоть. Одну из будущих испытуемых, одаренную Мелани, решает спасти молодая учительница.",
+            "film_logo_src": "https://thumbs.dfs.ivi.ru/storage36/contents/2/6/2606e2ffa2bcf73723283fac96afaa.jpg/140x215/"
+        });
+        this.films.push({
+            "film_name": "Остров на троих",
+            "film_description": "Джек и Дженнифер недавно поженились и хотят провести свой медовый месяц на шикарной яхте. Но судно, на котором они отправились в путешествие, внезапно терпит крушение у берегов неизведанного острова.",
+            "film_logo_src": "https://thumbs.dfs.ivi.ru/storage31/contents/8/3/c2bd7511874169b5f0442182af37df.jpg/140x215/"
+        });
+        this.films.push({
+            "film_name": "Студентка по вызову",
+            "film_description": "История о поиске себя, своего места в жизни и о том, на что иногда толкает студентов система платного образования.",
+            "film_logo_src": "https://thumbs.dfs.ivi.ru/storage26/contents/9/3/a9bb6ff65d528e328172a6135f289b.jpg/140x215/"
+        });
+        this.films.push({
+            "film_name": "Интимные приключения",
+            "film_description": "Этот мистический фильм с многочисленными эротическими сценами погружает зрителя в мир подсознательной деятельности человека, находящегося в состоянии гипноза и отринувшего все условности, запреты и собственные комплексы. Жизнь героини картины «Интимные приключения», погрузившейся в необычный эксперимент, круто изменится, а сама она неузнаваемо преобразится.Симпатичная девушка Кароль уже довольно долго поддерживает отношения с одним молодым человеком. Вроде бы все нормально - и сложившийся быт, и легкое приятное общение. Да и вообще, парень любит ее, заботится, выполняет не только ее просьбы, но и капризы. Но что-то не удовлетворяет Кароль, когда они занимаются сексом. В постели она чувствует себя не так комфортно, как хотелось бы. Знакомство с Софи, предложившей Кароль эксперимент над собственным телом, погружает  девушку в неизведанный ранее мир невероятной чувственности, дикой страсти, животных наслаждений и сильнейших потрясений.",
+            "film_logo_src": "https://thumbs.dfs.ivi.ru/storage24/contents/5/9/1d620234d16d1dd8c96bce759063ba.jpg/140x215/"
+        });
+
+
+        console.log(this.films);
+    },
+    methods: {
+        hightLightRow: function(event) {
+            $(event.currentTarget).find("span").addClass('hightlighted-row');
+        },
+        deDightLightRow: function(event) {
+            $(event.currentTarget).find("span").removeClass('hightlighted-row');
+        },
+        addPlace(row, place) {
+            for (let ticket of this.places) {
+                if (ticket.id == row + "" + place) {
+                    return false;
+                }
+            }
+            this.places.push({
+                "row": row,
+                "place": place,
+                "id": row + "" + place
+            });
+            return true;
+        },
+        checkClick: function(event) {
+            element = $(event.target);
+            if (element.hasClass('place')) {
+                place = element.attr("data-place");
+                row = element.parent(".row-places").attr("data-row");
+                if (this.addPlace(row, place)) {
+                    element.addClass('place-selected');
+                }
+            }
+        },
+        removeTicket: function(event) {
+            element = $(event.target).parent(".ticket");
+            ticketId = element.attr("data-ticket");
+            this.places.forEach(function(ticket, index, places) {
+                if (ticket.id == ticketId) {
+                    places.splice(index, 1);
+                    $("#app").find("div[data-row='" + ticket.row + "']").find("div[data-place='" + ticket.place + "']").removeClass('place-selected');
+                }
+            });
+
+        },
+
+    },
+});
+</script>
+</html>

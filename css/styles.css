@@ -33,7 +33,7 @@ h1{
 .padding-top{
 	padding-top: 10px;
 }
-input[type="text"]{
+.search{
 	max-width: 200px;
 	width: 100%;
 }
@@ -83,4 +83,95 @@ input[type="text"]{
 }
 .ticket>span:hover{
 	cursor: pointer;
+}
+.film{
+	display: inline-block;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	width: 24%;
+	min-width: 200px;
+}
+.card-img-top{
+	width: 100%;	
+}
+.card-text{
+	max-height: 100px;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+.date-input{
+	padding: 10px;
+}
+
+
+#dropZone {    
+    color: #555;
+    font-size: 18px;
+    text-align: center;    
+    
+    width: 400px;
+    padding: 15px 0;
+    margin: 50px auto;
+    
+    background: #eee;
+    border: 1px solid #ccc;
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#dropZone.hover {
+    background: #ddd;
+    border-color: #aaa;
+}
+
+#dropZone.error {
+    background: #faa;
+    border-color: #f00;
+}
+
+#dropZone.drop {
+    background: #afa;
+    border-color: #0f0;
+}
+.separator{
+	height: 5px;
+	width: 100%;
+}
+
+
+.searchbox{
+	position: relative;
+}
+.search-results{
+	background-color: white;
+	position: absolute;
+	top: 110%;
+	max-width: 200px;
+	border-radius: 4px;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	box-shadow: 0px 0px  5px #eee;
+}
+
+.search-result{
+	display: block;
+	padding: 4px 8px;
+	cursor: pointer;
+}
+.search-result:hover{
+	background-color: #eee;
+}
+.search-result:first-child{
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.search-result:last-child{
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 }

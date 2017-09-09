@@ -25,8 +25,13 @@
 					<li class="menu-item">Drama</li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 padding-top">
-				<input class="form-control" type="text" placeholder="Search movie..."></div>
+			<div id="searchApp" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 padding-top searchbox">
+				<ul class="search-results" v-bind:class="{hidden: isHidden}">
+					<li class="search-result" v-for="searchResult in results">{{searchResult}}</li>
+					
+				</ul>
+				<input class="search form-control" type="text" placeholder="Search movie..." v-on:keyup="search($event)">
+			</div>
 		</div>
 	</nav>
 	<div id="app" class="page">
@@ -117,55 +122,81 @@
 			</div>
 		</div>
 	</div>
-	<div class="hidden">
-		
-	</div>
 </body>
 <script>
-	new Vue({
-	  el: '#selecting-tickets-widget',
-	  data: {
-	  	places: [],
-	  },
-	  methods: {
-	  	hightLightRow: function(event){
-	  		$(event.currentTarget).find("span").addClass('hightlighted-row');
-	  	},
-	  	deDightLightRow: function(event){
-	  		$(event.currentTarget).find("span").removeClass('hightlighted-row');
-	  	},
-	  	addPlace(row, place){
-	  		for(let ticket of this.places){
-	  			if(ticket.id == row+""+place){
-	  				return false;
-	  			}
-	  		}
-	  		this.places.push({"row":row,"place":place,"id":row+""+place});
-	  		return true;
-	  	},
-	  	checkClick: function(event){
-	  		element = $(event.target);
-	  		if(element.hasClass('place')){
-	  			place = element.attr("data-place");
-	  			row = element.parent(".row-places").attr("data-row");
-	  			if(this.addPlace(row, place)){
-		  			element.addClass('place-selected');
-		  		}
-	  		}
-	  	},
-	  	removeTicket: function(event){
-	  		element = $(event.target).parent(".ticket");
-	  		ticketId = element.attr("data-ticket");
-	  		this.places.forEach(function(ticket, index, places) {
-			  if(ticket.id == ticketId){
-			  	places.splice(index,1);
-			  	$("#app").find("div[data-row='" +ticket.row+ "']").find("div[data-place='" +ticket.place+ "']").removeClass('place-selected');
-			  }
-			});
-	  		
-	  	},
-	  	
-	  },
-	});
+new Vue({
+    el: '#searchApp',
+    data: {
+        results: [],
+        isHidden: true,
+    },
+    created: function() {
+        this.results.push("one result");
+        this.results.push("two result");
+        this.results.push("three result");
+    },
+    methods: {
+        showHide: function(event) {
+            searchInput = $(event.target);
+            if (searchInput.val().length == 0) {
+                this.isHidden = true;
+            } else {
+                this.isHidden = false;
+            }
+        },
+        search: function(event) {
+            this.showHide(event);
+            //there will be ajax request which will load search results and push them into results array
+            // now i just do similiarly actions insode create functions
+        },
+    },
+});
+new Vue({
+    el: '#selecting-tickets-widget',
+    data: {
+        places: [],
+    },
+    methods: {
+        hightLightRow: function(event) {
+            $(event.currentTarget).find("span").addClass('hightlighted-row');
+        },
+        deDightLightRow: function(event) {
+            $(event.currentTarget).find("span").removeClass('hightlighted-row');
+        },
+        addPlace(row, place) {
+            for (let ticket of this.places) {
+                if (ticket.id == row + "" + place) {
+                    return false;
+                }
+            }
+            this.places.push({
+                "row": row,
+                "place": place,
+                "id": row + "" + place
+            });
+            return true;
+        },
+        checkClick: function(event) {
+            element = $(event.target);
+            if (element.hasClass('place')) {
+                place = element.attr("data-place");
+                row = element.parent(".row-places").attr("data-row");
+                if (this.addPlace(row, place)) {
+                    element.addClass('place-selected');
+                }
+            }
+        },
+        removeTicket: function(event) {
+            element = $(event.target).parent(".ticket");
+            ticketId = element.attr("data-ticket");
+            this.places.forEach(function(ticket, index, places) {
+                if (ticket.id == ticketId) {
+                    places.splice(index, 1);
+                    $("#app").find("div[data-row='" + ticket.row + "']").find("div[data-place='" + ticket.place + "']").removeClass('place-selected');
+                }
+            });
+        },
+    },
+});
 </script>
 </html>
