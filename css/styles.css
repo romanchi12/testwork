@@ -1,0 +1,86 @@
+html, body{
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+}
+nav{
+	width: 100%;
+	background-color: rgba(121, 114, 108, 1);
+}
+h1{
+	color: #5B5B5B;
+}
+.menu{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.menu-item{
+	display: inline-block;
+	padding: 15px 20px;
+	color: white;
+	text-decoration: underline;
+	font-size: 1.3rem;
+}
+.menu-item:hover{
+	cursor: pointer;
+	background-color: rgba(91, 90, 77, 1);
+}
+.row{
+	margin: 0px;
+	padding: 0px;
+}
+.padding-top{
+	padding-top: 10px;
+}
+input[type="text"]{
+	max-width: 200px;
+	width: 100%;
+}
+.page{
+	padding: 20px 50px;
+}
+.list{
+	font-size: 1.2rem;
+	color: #5B5B5B;
+	line-height: 2rem;
+}
+.list-item-value{
+	font-weight: bold;
+}
+.selecting-tickets-widget{
+	padding: 15px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+.row-places{
+	padding: 3px;
+	margin-bottom: 4px;
+	width: 100%;
+}
+.row-places > span{
+	margin-right: 5px;
+}
+.place{
+	padding: 6px 12px;
+	margin: 0px 2px;
+	display: inline-block;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	font-size: 0.9rem;
+}
+.place:hover{
+	background-color: #d9534f;
+	color: white;
+	cursor: pointer;
+}
+.place-selected{
+	background-color: #d9534f;
+	color: white;
+}
+.hightlighted-row{
+	color: #d9534f;
+}
+.ticket>span:hover{
+	cursor: pointer;
+}

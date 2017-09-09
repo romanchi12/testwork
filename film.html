@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Film</title>
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+	</head>
+<body>
+	<nav>
+		<div class="row">
+			<div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<ul class="menu">
+					<li class="menu-item">Comedy</li>
+					<li class="menu-item">Action</li>
+					<li class="menu-item">Adventure</li>
+					<li class="menu-item">Crime</li>
+					<li class="menu-item">Drama</li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 padding-top">
+				<input class="form-control" type="text" placeholder="Search movie..."></div>
+		</div>
+	</nav>
+	<div id="app" class="page">
+		<div class="row">
+			<h1>Description</h1>
+		</div>
+		<div class="row">
+			<div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<img src="https://api.fnkr.net/testimg/200x250/00CED1/FFF/?text=Big+Boss" class="img-responsive" alt="Image">
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<ul class="list">
+							<li class="list-item">Movie title: <span class="list-item-value">Big Boss</span></li>
+							<li class="list-item">Description: <span class="list-item-value">Lorem ipsum dolor sit amet.</span></li>
+							<li class="list-item">Genre: <span class="list-item-value">Comedy</span></li>
+							<li class="list-item">Start time: <span class="list-item-value">19:00</span></li>
+							<li class="list-item">Duration: <span class="list-item-value">138 min</span></li>
+							<li class="list-item">Date of release: <span class="list-item-value">08.09.2017</span></li>
+							<li class="list-item">Ticket price: <span class="list-item-value">5$</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+		</div>
+		<div class="row">
+			<h1>Buy ticket</h1>
+		</div>
+		<div class="row">
+			<div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+				
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				<div id="selecting-tickets-widget">
+					<div class="selecting-tickets-widget">
+						<div data-row="1" class="row-places" v-on:mouseover="hightLightRow($event)" v-on:mouseleave="deDightLightRow($event)" v-on:click="checkClick($event)">
+							<span>ряд 1 </span>
+							<div data-place="1" class="place">1</div>
+							<div data-place="2" class="place">2</div>
+							<div data-place="3" class="place">3</div>
+							<div data-place="4" class="place">4</div>
+							<div data-place="5" class="place">5</div>
+							<div data-place="6" class="place">6</div>
+							<div data-place="7" class="place">7</div>
+						</div>
+						<div data-row="2" class="row-places" v-on:mouseover="hightLightRow($event)" v-on:mouseleave="deDightLightRow($event)" v-on:click="checkClick($event)">
+							<span>ряд 2 </span>
+							<div data-place="1" class="place">1</div>
+							<div data-place="2" class="place">2</div>
+							<div data-place="3" class="place">3</div>
+							<div data-place="4" class="place">4</div>
+							<div data-place="5" class="place">5</div>
+							<div data-place="6" class="place">6</div>
+							<div data-place="7" class="place">7</div>
+						</div>
+						<div data-row="3" class="row-places" v-on:mouseover="hightLightRow($event)" v-on:mouseleave="deDightLightRow($event)" v-on:click="checkClick($event)">
+							<span>ряд 3 </span>
+							<div data-place="1" class="place">1</div>
+							<div data-place="2" class="place">2</div>
+							<div data-place="3" class="place">3</div>
+							<div data-place="4" class="place">4</div>
+							<div data-place="5" class="place">5</div>
+							<div data-place="6" class="place">6</div>
+							<div data-place="7" class="place">7</div>
+						</div>
+						<div data-row="4" class="row-places" v-on:mouseover="hightLightRow($event)" v-on:mouseleave="deDightLightRow($event)" v-on:click="checkClick($event)">
+							<span>ряд 4 </span>
+							<div data-place="1" class="place">1</div>
+							<div data-place="2" class="place">2</div>
+							<div data-place="3" class="place">3</div>
+							<div data-place="4" class="place">4</div>
+							<div data-place="5" class="place">5</div>
+							<div data-place="6" class="place">6</div>
+							<div data-place="7" class="place">7</div>
+						</div>
+						<div class="row">
+							<div class="ticket" v-for="ticket in places" v-bind:data-ticket="ticket.id">Ряд: {{ticket.row}}, Місце: {{ticket.place}} <span class="glyphicon glyphicon-remove" aria-hidden="true" v-on:click="removeTicket($event)"></span></div>
+							<center><button type="button" class="btn btn-danger">Buy</button></center>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+				
+			</div>
+		</div>
+	</div>
+	<div class="hidden">
+		
+	</div>
+</body>
+<script>
+	new Vue({
+	  el: '#selecting-tickets-widget',
+	  data: {
+	  	places: [],
+	  },
+	  methods: {
+	  	hightLightRow: function(event){
+	  		$(event.currentTarget).find("span").addClass('hightlighted-row');
+	  	},
+	  	deDightLightRow: function(event){
+	  		$(event.currentTarget).find("span").removeClass('hightlighted-row');
+	  	},
+	  	addPlace(row, place){
+	  		for(let ticket of this.places){
+	  			if(ticket.id == row+""+place){
+	  				return false;
+	  			}
+	  		}
+	  		this.places.push({"row":row,"place":place,"id":row+""+place});
+	  		return true;
+	  	},
+	  	checkClick: function(event){
+	  		element = $(event.target);
+	  		if(element.hasClass('place')){
+	  			place = element.attr("data-place");
+	  			row = element.parent(".row-places").attr("data-row");
+	  			if(this.addPlace(row, place)){
+		  			element.addClass('place-selected');
+		  		}
+	  		}
+	  	},
+	  	removeTicket: function(event){
+	  		element = $(event.target).parent(".ticket");
+	  		ticketId = element.attr("data-ticket");
+	  		this.places.forEach(function(ticket, index, places) {
+			  if(ticket.id == ticketId){
+			  	places.splice(index,1);
+			  	$("#app").find("div[data-row='" +ticket.row+ "']").find("div[data-place='" +ticket.place+ "']").removeClass('place-selected');
+			  }
+			});
+	  		
+	  	},
+	  	
+	  },
+	});
+</script>
+</html>
